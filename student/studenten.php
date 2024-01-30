@@ -40,9 +40,22 @@ try {
     $result->execute();
     $result->setFetchMode(PDO::FETCH_ASSOC);
 
-    if(count($result)>0) { // wel studenten ophalen
-        while($row=)
-    }
+        foreach ($result as $row)
+        {
+                    $contentTable .= "<tr>
+                            <td>" . $row['id'] . "</td>
+                            <td>" . $row['voornaam'] . "</td>
+                            <td>" . $row['tussenvoegsel'] . "</td>
+                            <td>" . $row['achternaam'] . "</td>
+                            <td>" . $row['straat'] . "</td>
+                            <td>" . $row['postcode'] . "</td>
+                            <td>" . $row['woonplaats'] . "</td>
+                            <td>" . $row['email'] . "</td>
+                            <td>" . $row['klas'] . "</td>
+                            <td>" . $row['geboortedatum'] . "</td>
+                        </tr>";
+        }
+    
 
 }
 catch (PDOException $e)
