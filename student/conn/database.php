@@ -2,8 +2,8 @@
 //STAP 1 - Initialisatie
 define('HOST', 'localhost');
 define('DATABASE', 'student');
-define('USER', 'webuser');
-define('PASSWORD','7q06DXjDr1Z3reXK');
+define('USER', 'docent');
+define('PASSWORD','docent');
 
 //connectie maken
 

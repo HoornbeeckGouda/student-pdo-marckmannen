@@ -55,7 +55,7 @@ try {
                             <td>" . $row['geboortedatum'] . "</td>
                         </tr>";
         }
-    
+
 
 }
 catch (PDOException $e)
