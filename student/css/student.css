@@ -17,3 +17,23 @@
     background-color: beige;
     color: white;
 }
+
+.inlogformulier {
+    margin: 0 auto 0 40%;
+    background-color: #82EC69;
+    padding: 80px 5px;
+}
+
+.achterinlog {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 942px;
+    height: 621px;
+    background-color: #FFDE09;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
