@@ -12,6 +12,7 @@ include 'inc/header.php';
     </div>
 </div>
  <?php
+session_reset();
 // inlogvariables toekennen
 if (isset($_POST['submit'])) {
     $inlognaam = strtolower($_POST['inloggen']);
@@ -36,13 +37,14 @@ if (isset($_POST['submit'])) {
 
         //checken of user bestaat
         if ($result->rowCount()==1) {
-
-            $_SESSION['gebruikersnaam'] = $result->fetchColumn(2);
-            $_SESSION['user_id'] = $result->fetchColumn(1);
+            $row=$result->fetch();
+            $_SESSION['gebruikersnaam'] = $row['gebruikersnaam'];
+            $_SESSION['user_id'] = $row['id'];
+            $_SESSION['verify'] = 'verify';
             header("refresh:0, url=./studenten.php");
         }
          else {
-            echo "<script>`<h2 class='foutegegevens'>Helaas! Foute gegevens</h2>`</script>";
+            echo "<h2  class='loginError'>Helaas! Foute gegevens</h2>";
             session_unset();
         }
     }

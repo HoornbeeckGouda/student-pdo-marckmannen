@@ -1,5 +1,6 @@
 <?php
 include 'conn/database.php';
+session_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">

@@ -8,6 +8,16 @@ body {
     background: linear-gradient(#212121, #6c6c6c);
 }
 
+.loginError {
+    position: absolute;
+    width: 300px;
+    margin: 200px auto auto;
+    color: red;
+    left: 50%;
+    right: 50%;
+    transform: translate(-50%);
+}
+
 #students {
     border-collapse: collapse;
     width: 100%;

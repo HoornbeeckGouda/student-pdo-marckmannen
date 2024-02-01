@@ -1,6 +1,6 @@
 <?php
 include 'inc/header.php';
-
+if(!isset($_SESSION['verify'])) header("refresh:0, url=./login.php");
 // initialiseren/declareren
 $contentTable = "";
 //tabelkop samenstellen
@@ -30,8 +30,6 @@ $qry_student = "SELECT
                         geboortedatum
                         FROM student
                         ORDER BY achternaam, voornaam;";
-// gegevens query ophalen uit db student
-//$result = mysqli_query($dbconn, $qry_student);
 
 // gegevens ophalen met pdo
 $result=$dbconn->prepare($qry_student);
@@ -64,22 +62,6 @@ catch (PDOException $e)
 
     echo "<script>alert('studenten niet gevonden');</script>";
 }
-//if ($count_records>0) { // wel studenten ophalen
-//    while ($row=mysqli_fetch_array($result)) {
-//        $contentTable .= "<tr>
-//                            <td>" . $row['id'] . "</td>
-//                            <td>" . $row['voornaam'] . "</td>
-//                            <td>" . $row['tussenvoegsel'] . "</td>
-//                            <td>" . $row['achternaam'] . "</td>
-//                            <td>" . $row['straat'] . "</td>
-//                            <td>" . $row['postcode'] . "</td>
-//                            <td>" . $row['woonplaats'] . "</td>
-//                            <td>" . $row['email'] . "</td>
-//                            <td>" . $row['klas'] . "</td>
-//                            <td>" . $row['geboortedatum'] . "</td>
-//                        </tr>";
-//    }
-//}
 $table_student = $table_header . $contentTable . "</table>";
 
 echo $table_student;
