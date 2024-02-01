@@ -42,7 +42,7 @@ if (isset($_POST['submit'])) {
             header("refresh:0, url=./studenten.php");
         }
          else {
-            echo "<script>"<h2 class='foutegegevens'>Helaas! Foute gegevens</h2>"</script>";
+            echo "<script>`<h2 class='foutegegevens'>Helaas! Foute gegevens</h2>`</script>";
             session_unset();
         }
     }
