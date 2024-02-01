@@ -1,7 +1,8 @@
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     height: 100vh;
-    width: 100vh;
+    width: 100vw;
+    overflow: hidden;
     margin: 0;
     padding: 0;
     background: linear-gradient(#212121, #6c6c6c);
@@ -12,29 +13,24 @@ body {
     width: 100%;
     margin-top: 50px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: green;
 }
 
 #students td, #students th {
-    border: 1px solid #ddd;
+    border: 1px solid #ff0000;
     padding: 15px;
     text-align: center;
 }
 
 #students tr:nth-child(even) {
-    background-color: #f8f8f8;
+    background-color: rgba(104, 211, 255, 0.66);
 }
 
 #students tr:hover {
     background-color: #e0f7fa;
 }
 
-#customers th {
-    padding-top: 15px;
-    padding-bottom: 15px;
-    text-align: left;
-    background-color: #4CAF50;
-    color: white;
-}
+
 
 .inlogformulier {
     width: 300px;
