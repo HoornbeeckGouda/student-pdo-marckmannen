@@ -13,5 +13,34 @@ include 'inc/header.php';
 </div>
     </div>
  <?php
+// inlogvariables toekennen
+if (isset($_POST['submit'])) {
+    $inlognaam = strtolower($_POST['inloggen']);
+    $wachtwoord = $_POST['password'];
+
+    // checken of inloggegevens kloppen
+    $query1 = "SELECT id, gebruikersnaam, wachtwoord, functie_id FROM gebruiker WHERE gebruikersnaam = :?; AND wachtwoord = :?";
+    $result=$dbconn->prepare($query1);
+
+    $stmt = mysqli_prepare($conn, $query1);
+    mysqli_stmt_bind_param($stmt, "ss", $inlognaam, $wachtwoord);
+    mysqli_stmt_execute($stmt);
+    $uitvoer = mysqli_stmt_get_result($stmt);
+
+    //checken of user bestaat
+    $aantal = mysqli_num_rows($uitvoer);
+    if ($aantal == 1) {
+        // de data fetchen van de uitgevoerde query
+        $row = mysqli_fetch_assoc($uitvoer);
+        $_SESSION['gebruikersnaam'] = $row['gebruikersnaam'];
+        $_SESSION['functie_id'] = $row['functie_id'];
+        $_SESSION['user_id'] = $row['id'];
+        header("refresh:0, url=./homepage.php");
+    } else {
+        echo "<h2 class='foutegegevens'>Helaas! Foute gegevens</h2>";
+        session_unset();
+    }
+}
+
 include 'inc/footer.php';
 ?>
