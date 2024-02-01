@@ -18,6 +18,27 @@ body {
     transform: translate(-50%);
 }
 
+.hallo {
+    position: absolute;
+    width: 300px;
+    margin: 200px auto auto;
+    color: #009eff;
+    left: 50%;
+    right: 50%;
+    transform: translate(-50%);
+}
+
+.btn {
+    position: absolute;
+    width: 100px;
+    height: fit-content;
+    margin: 100px auto auto;
+    color: #009eff;
+    left: 50%;
+    right: 50%;
+    transform: translate(-100%);
+}
+
 #students {
     border-collapse: collapse;
     width: 100%;

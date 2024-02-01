@@ -1,5 +1,11 @@
 <?php
 include 'inc/header.php';
+if (isset($_GET['logout'])) {
+    session_unset();
+    session_destroy();
+    header("Location: ./login.php");
+    exit();
+}
 if(!isset($_SESSION['verify'])) header("refresh:0, url=./login.php");
 // initialiseren/declareren
 $contentTable = "";
@@ -65,7 +71,9 @@ catch (PDOException $e)
 $table_student = $table_header . $contentTable . "</table>";
 
 echo $table_student;
-
-
+echo '<h1 class="hallo">Hallo ' . $_SESSION['gebruikersnaam'] . '!</h1>';
+echo '<form action="?logout" method="post">';
+echo '<button type="submit" class="btn"><h2>logout</h2></button>';
+echo '</form>';
 include 'inc/footer.php'
 ?>
