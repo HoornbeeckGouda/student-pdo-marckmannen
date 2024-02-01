@@ -36,7 +36,6 @@ if (isset($_POST['submit'])) {
             $row = $result->fetch();
             $hashedPassword = $row['hashed_wachtwoord'];
 
-            // Verify the entered password against the hashed password
             if (password_verify($wachtwoord, $hashedPassword)) {
                 $_SESSION['gebruikersnaam'] = $row['gebruikersnaam'];
                 $_SESSION['user_id'] = $row['id'];
