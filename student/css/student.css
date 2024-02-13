@@ -2,9 +2,10 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     height: 100vh;
     width: 100vw;
-    overflow: hidden;
+    overflow-x: hidden;
     margin: 0;
     padding: 0;
+    color: white;
     background: linear-gradient(#212121, #6c6c6c);
 }
 
@@ -20,11 +21,11 @@ body {
 
 .hallo {
     position: absolute;
-    width: 300px;
-    margin: 200px auto auto;
+    width: fit-content;
     color: #009eff;
-    left: 50%;
-    right: 50%;
+    right: 0;
+    top: 0;
+    margin-top: 0;
     transform: translate(-50%);
 }
 
@@ -39,12 +40,18 @@ body {
     transform: translate(-100%);
 }
 
+.btn-edit {
+    height: 35px;
+    line-height: 0px;
+}
+
 #students {
     border-collapse: collapse;
     width: 100%;
     margin-top: 50px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     background-color: green;
+    color: black;
 }
 
 #students td, #students th {
@@ -106,6 +113,44 @@ body {
 }
 
 .inlogformulier .loggin:hover {
+    background-color: #45a049;
+}
+
+.editForm {
+    width: 300px;
+    margin: 50px auto;
+    font-family: Arial, sans-serif;
+}
+
+.editForm label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.editForm input[type="text"],
+.editForm input[type="email"],
+.editForm input[type="date"] {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.editForm input[type="submit"] {
+    width: 100%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.editForm input[type="submit"]:hover {
     background-color: #45a049;
 }
 

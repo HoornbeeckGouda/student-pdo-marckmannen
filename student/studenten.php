@@ -1,5 +1,6 @@
 <?php
 include 'inc/header.php';
+include 'Student.php';
 if (isset($_GET['logout'])) {
     session_unset();
     session_destroy();
@@ -46,21 +47,26 @@ try {
 
         foreach ($result as $row)
         {
-                    $contentTable .= "<tr>
-                            <td>" . $row['id'] . "</td>
-                            <td>" . $row['voornaam'] . "</td>
-                            <td>" . $row['tussenvoegsel'] . "</td>
-                            <td>" . $row['achternaam'] . "</td>
-                            <td>" . $row['straat'] . "</td>
-                            <td>" . $row['postcode'] . "</td>
-                            <td>" . $row['woonplaats'] . "</td>
-                            <td>" . $row['email'] . "</td>
-                            <td>" . $row['klas'] . "</td>
-                            <td>" . $row['geboortedatum'] . "</td>
-                        </tr>";
+            $contentTable .= "<tr>
+                        <td>" . $row['id'] . "</td>
+                        <td>" . $row['voornaam'] . "</td>
+                        <td>" . $row['tussenvoegsel'] . "</td>
+                        <td>" . $row['achternaam'] . "</td>
+                        <td>" . $row['straat'] . "</td>
+                        <td>" . $row['postcode'] . "</td>
+                        <td>" . $row['woonplaats'] . "</td>
+                        <td>" . $row['email'] . "</td>
+                        <td>" . $row['klas'] . "</td>
+                        <td>" . $row['geboortedatum'] . "</td>
+                        <td>
+                            <form action='edit.php' method='get'>
+                                    <input type='hidden' name='action' value='editStudent'>
+                                <button type='submit' class='btn-edit' name='edit_id' value='" . $row['id'] . "'>
+                                    <h2>edit</h2>
+                                </button>
+                            </form>
+                        </td>";
         }
-
-
 }
 catch (PDOException $e)
 {
