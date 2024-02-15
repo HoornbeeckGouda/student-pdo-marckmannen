@@ -28,10 +28,9 @@ class Student {
         }
     }
 
-    public function editStudent($id) {
+    public function editStudent() {
 
         if ($_SERVER["REQUEST_METHOD"] == "POST"){
-            $student_id = $_POST['id'];
             $voornaam = $_POST['voornaam'];
             $achternaam = $_POST['achternaam'];
             $tussenvoegsel = $_POST['tussenvoegsel'];
@@ -41,15 +40,25 @@ class Student {
             $email = $_POST['email'];
             $klas = $_POST['klas'];
             $geboortedatum = $_POST['geboortedatum'];
+            $id = $_POST['id'];
+
         }
 
-        $qry_student = "INSERT INTO student
-                        (id, voornaam, tussenvoegsel, achternaam, straat, postcode, woonplaats, email, klas, geboortedatum)
-                        VALUES (:student_id, :voornaam, :tussenvoegsel, :achternaam, :straat, :postcode, :woonplaats, :email, :klas, :geboortedatum)
+        $qry_student = "
+                        UPDATE student
+                        SET voornaam = :voornaam,
+                            tussenvoegsel = :tussenvoegsel,
+                            achternaam = :achternaam,
+                            straat = :straat,
+                            postcode = :postcode,
+                            woonplaats = :woonplaats,
+                            email = :email,
+                            klas = :klas,
+                            geboortedatum = :geboortedatum,
+                            id = :id
                         WHERE id = :selected_id;";
         $qry = $this->dbconn->prepare($qry_student);
         $qry->bindParam(':selected_id', $id);
-        $qry->bindParam(':student_id', $student_id);
         $qry->bindParam(':voornaam', $voornaam);
         $qry->bindParam(':tussenvoegsel', $tussenvoegsel);
         $qry->bindParam(':achternaam', $achternaam);
@@ -58,18 +67,25 @@ class Student {
         $qry->bindParam(':woonplaats', $woonplaats);
         $qry->bindParam(':email', $email);
         $qry->bindParam(':klas', $klas);
+        $qry->bindParam(':id', $id);
         $qry->bindParam(':geboortedatum', $geboortedatum);
 
         try {
             $qry->execute();
-
-            return $qry->fetchAll(PDO::FETCH_ASSOC);
+            if ($qry->rowCount() > 0) {
+                echo "<script>alert('Aanpassen van studentgegevens gelukt!');</script>";
+                echo "<meta http-equiv='refresh' content='0;url=studenten.php'>";
+            } else {
+                echo "<script>alert('Geen gegevens gewijzigd.');</script>";
+                echo "<meta http-equiv='refresh' content='0;url=studenten.php'>";
+            }
         }
         catch (PDOException $e)
         {
             echo "foutje: ". $e->getMessage();
 
-            echo "<script>alert('studenten niet gevonden');</script>";
+            echo "<script>alert('Aanpassen van studentgegevens gefaald!');</script>";
+            echo "<meta http-equiv='refresh' content='0;url=studenten.php'>";
         }
 
     }
