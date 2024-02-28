@@ -27,6 +27,39 @@ class Student {
             echo "<script>alert('studenten niet gevonden');</script>";
         }
     }
+    public function updateToken($gebruikersnaam, $token) {
+        $query1 = "UPDATE GEBRUIKER SET token = :token WHERE gebruikersnaam = :user";
+        $result = $this->dbconn->prepare($query1);
+
+        $result->bindParam(':token', $token);
+        $result->bindParam(':user', $gebruikersnaam);
+
+        $result->execute();
+        return $result;
+}
+public function tokenChecker($gebruikersnaam, $token) {
+    $query1 = "SELECT gebruikersnaam FROM GEBRUIKER WHERE gebruikersnaam = :user AND token = :token";
+    $result = $this->dbconn->prepare($query1);
+
+    $result->bindParam(':token', $token);
+    $result->bindParam(':user', $gebruikersnaam);
+    $result->execute();
+    return ($result->rowCount() >= 1);
+}
+
+    public function editPassword($gebruikersnaam, $token, $wachtwoord) {
+        // Hash the password
+        $hashedPassword = password_hash($wachtwoord, PASSWORD_DEFAULT);
+
+        $query = "UPDATE GEBRUIKER SET hashed_wachtwoord = :wachtwoord WHERE gebruikersnaam = :user AND token = :token";
+        $result = $this->dbconn->prepare($query);
+
+        $result->bindParam(':token', $token);
+        $result->bindParam(':user', $gebruikersnaam);
+        $result->bindParam(':wachtwoord', $hashedPassword);
+
+        $result->execute();
+    }
 
     public function editStudent() {
 

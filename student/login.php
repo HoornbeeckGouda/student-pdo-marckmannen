@@ -8,6 +8,7 @@ include 'inc/header.php';
             <input type="text" name="inloggen" size="25" class="gebruikersnaam" placeholder="Gebruikersnaam"><br>
             <input type="password" name="password" size="25" class="wachtwoord" placeholder="Wachtwoord"><br>
             <input type="submit" name="submit" class="loggin" value="Log In">
+            <div class="ww-reset"><a href="wwreset.php">Wachtwoord vergeten</a><div>
         </form>
     </div>
 </div>

@@ -97,6 +97,17 @@ body {
     color: #333;
 }
 
+.ww-reset {
+    color: black;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
 .inlogformulier input {
     width: 100%;
     padding: 10px;
