@@ -47,6 +47,16 @@ public function tokenChecker($gebruikersnaam, $token) {
     return ($result->rowCount() >= 1);
 }
 
+public function checkEmail($gebruikersnaam, $email){
+    $query1 = "SELECT email FROM GEBRUIKER WHERE gebruikersnaam = :user AND email = :email";
+    $result = $this->dbconn->prepare($query1);
+
+    $result->bindParam(':email', $email);
+    $result->bindParam(':user', $gebruikersnaam);
+    $result->execute();
+    return ($result->rowCount() >= 1);
+}
+
     public function editPassword($gebruikersnaam, $token, $wachtwoord) {
         // Hash the password
         $hashedPassword = password_hash($wachtwoord, PASSWORD_DEFAULT);
