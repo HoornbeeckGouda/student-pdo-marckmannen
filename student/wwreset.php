@@ -21,11 +21,6 @@ if (isset($_GET['logout'])) {
             <input type="email" name="email" size="25" class="email" placeholder="Email"><br>
             <input type="submit" name="submit" class="loggin" value="Stuur email">
         </form>
-<!--        <form action="?" method="POST">-->
-<!--            <div class="g-recaptcha" data-sitekey="6LdsnIopAAAAAPVVIovEInNSm8c4RZPJ7sLKUamE"></div>-->
-<!--            <br/>-->
-<!--            <input type="submit" name="submit" value="Submit">-->
-<!--        </form>-->
     </div>
 </div>
 
